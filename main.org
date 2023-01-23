@@ -1,0 +1,21 @@
+#+title: Демо моего сетапа для работы на Linux
+
+* Pre-Reqs
+- Linux (Fedora36)
+- BSPWM - wm
+- Sxhkd - hotkeys
+- Polybar - status bar
+- Clojure/bb - general purpose/scripting lang
+- Bash/Fish - shell
+- Konsole - terminal
+- Wal & Feh - color palette from background & background setter
+
+* Backgrounds and colors
+**** 1st
+file:img/1.png
+**** 2nd
+file:img/2.png
+**** 3rd
+file:img/3.png
+
+* Work layout
