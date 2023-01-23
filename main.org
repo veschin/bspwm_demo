@@ -1,4 +1,8 @@
 #+title: Work setup demo
+#+EXPORT_FILE_NAME: README.md
+
+* Specs
+file:img/0.png
 
 * Pre-Reqs
 - Linux (Fedora36)
@@ -23,7 +27,7 @@ feh --bg-fill $wallpaper --bg-fill $wallpaper
 #+end_src
 
 * Work layout
-** Binary layot
+** Binary layout
 file:img/4.png
 ** Real example
 file:img/5.png
