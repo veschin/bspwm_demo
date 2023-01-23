@@ -1,29 +1,29 @@
-- [Specs](#orgec4234e)
-- [Pre-Reqs](#org07d5db5)
-- [Backgrounds and colors](#org41c4da1)
-  - [`~/.config/bspwm/bspwmrc`](#orgea3c08d)
-- [Work layout](#org33b1f32)
-  - [Binary layout](#orgebf8690)
-  - [Real example](#org0008a37)
-- [Single monitor with 5 desktops](#org6c7a2b5)
-  - [`~/.config/bspwm/bspwmrc`](#orgce8f164)
-- [Rules for some apps](#org803aff1)
-  - [`~/.config/bspwm/bspwmrc`](#org07c3721)
-- [Some hotkeys in sxhkd](#orge3554d5)
-  - [`~/.config/sxhkd/sxhkdrc`](#orgde967a9)
-- [Bspc hotkeys](#orgc1c68a3)
-  - [`~/.config/sxhkd/sxhkdrc`](#orga342a4f)
+- [Specs](#org276c4c7)
+- [Pre-Reqs](#org4477ceb)
+- [Backgrounds and colors](#org479d19a)
+  - [`~/.config/bspwm/bspwmrc`](#orgf2de29a)
+- [Work layout](#orgc2efdf9)
+  - [Binary layout](#orgb8a7b32)
+  - [Real example](#orgca9904f)
+- [Single monitor with 5 desktops](#orgc6115cb)
+  - [`~/.config/bspwm/bspwmrc`](#org5a522f8)
+- [Rules for some apps](#orgb04c873)
+  - [`~/.config/bspwm/bspwmrc`](#orga52d20b)
+- [Some hotkeys in sxhkd](#org0796ff5)
+  - [`~/.config/sxhkd/sxhkdrc`](#org58eb94b)
+- [Bspc hotkeys](#org1bda3d6)
+  - [`~/.config/sxhkd/sxhkdrc`](#org3f87132)
 
 
 
-<a id="orgec4234e"></a>
+<a id="org276c4c7"></a>
 
 # Specs
 
-![img](img/0.png)
+![img](img/0_1.png)
 
 
-<a id="org07d5db5"></a>
+<a id="org4477ceb"></a>
 
 # Pre-Reqs
 
@@ -37,14 +37,14 @@
 -   Wal & Feh - color palette from background & background setter
 
 
-<a id="org41c4da1"></a>
+<a id="org479d19a"></a>
 
 # Backgrounds and colors
 
 ![img](img/1.png) ![img](img/2.png) ![img](img/3.png)
 
 
-<a id="orgea3c08d"></a>
+<a id="orgf2de29a"></a>
 
 ## `~/.config/bspwm/bspwmrc`
 
@@ -55,31 +55,31 @@ feh --bg-fill $wallpaper --bg-fill $wallpaper
 ```
 
 
-<a id="org33b1f32"></a>
+<a id="orgc2efdf9"></a>
 
 # Work layout
 
 
-<a id="orgebf8690"></a>
+<a id="orgb8a7b32"></a>
 
 ## Binary layout
 
 ![img](img/4.png)
 
 
-<a id="org0008a37"></a>
+<a id="orgca9904f"></a>
 
 ## Real example
 
 ![img](img/5.png)
 
 
-<a id="org6c7a2b5"></a>
+<a id="orgc6115cb"></a>
 
 # Single monitor with 5 desktops
 
 
-<a id="orgce8f164"></a>
+<a id="org5a522f8"></a>
 
 ## `~/.config/bspwm/bspwmrc`
 
@@ -96,12 +96,12 @@ bspc config gapless_monocle      true
 ```
 
 
-<a id="org803aff1"></a>
+<a id="orgb04c873"></a>
 
 # Rules for some apps
 
 
-<a id="org07c3721"></a>
+<a id="orga52d20b"></a>
 
 ## `~/.config/bspwm/bspwmrc`
 
@@ -112,12 +112,12 @@ bspc rule -a Peek state=floating follow=on focus=on
 ```
 
 
-<a id="orge3554d5"></a>
+<a id="org0796ff5"></a>
 
 # Some hotkeys in sxhkd
 
 
-<a id="orgde967a9"></a>
+<a id="org58eb94b"></a>
 
 ## `~/.config/sxhkd/sxhkdrc`
 
@@ -140,12 +140,12 @@ alt + space
 ```
 
 
-<a id="orgc1c68a3"></a>
+<a id="org1bda3d6"></a>
 
 # Bspc hotkeys
 
 
-<a id="orga342a4f"></a>
+<a id="org3f87132"></a>
 
 ## `~/.config/sxhkd/sxhkdrc`
 

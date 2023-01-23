@@ -2,7 +2,7 @@
 #+EXPORT_FILE_NAME: README.md
 
 * Specs
-file:img/0.png
+file:img/0_1.png
 
 * Pre-Reqs
 - Linux (Fedora36)
