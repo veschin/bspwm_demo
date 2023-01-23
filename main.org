@@ -1,4 +1,4 @@
-#+title: Демо моего сетапа для работы на Linux
+#+title: Work setup demo
 
 * Pre-Reqs
 - Linux (Fedora36)
@@ -11,11 +11,86 @@
 - Wal & Feh - color palette from background & background setter
 
 * Backgrounds and colors
-**** 1st
 file:img/1.png
-**** 2nd
 file:img/2.png
-**** 3rd
 file:img/3.png
 
+** ~~/.config/bspwm/bspwmrc~
+#+begin_src bash
+wallpaper=`find ~/wallpapers/ | sort -R | head -1`
+wal -i $wallpaper -n
+feh --bg-fill $wallpaper --bg-fill $wallpaper
+#+end_src
+
 * Work layout
+** Binary layot
+file:img/4.png
+** Real example
+file:img/5.png
+
+* Single monitor with 5 desktops
+** ~~/.config/bspwm/bspwmrc~
+#+begin_src bash
+bspc monitor HDMI-A-0 -d 1 2 3 4 5
+xrandr -s 1920x1080 -r 144
+
+bspc config border_width         5
+bspc config window_gap          15
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+#+end_src
+
+* Rules for some apps
+** ~~/.config/bspwm/bspwmrc~
+#+begin_src bash
+bspc rule -a Google-chrome desktop=3
+bspc rule -a TelegramDesktop:telegram-desktop desktop=2
+bspc rule -a Peek state=floating follow=on focus=on
+#+end_src
+
+* Some hotkeys in sxhkd
+** ~~/.config/sxhkd/sxhkdrc~
+#+begin_src bash
+super + Return
+	konsole
+
+Print
+	sudo kill -9 `pgrep flameshot` && \
+	flameshot gui && \
+	xclip -i `ls -d -r --no-icons $HOME/Pictures/* | head -1` \
+	-selection clipboard \
+	-target image/png
+
+super + space
+	rofi -show drun
+
+alt + space
+	rofi -show run
+#+end_src
+
+* Bspc hotkeys
+** ~~/.config/sxhkd/sxhkdrc~
+#+begin_src bash
+
+# Move window
+super + {Left,Down,Up,Right}
+	bspc node -s {west,south,north,east}
+
+# Cycle between windows
+alt + {_,shift + }Tab
+	bspc node -f {next,prev}.LOCAL
+
+# Reload bspwm config
+super + shift + r
+	bspc wm -r && pkill -USR1 -x sxhkd
+
+# Close window
+super + w
+	bspc node -c
+
+# Move window to desktop
+super + {_,alt +} {1-9}
+	bspc {desktop -f,node -d} {1-9}
+#+end_src
