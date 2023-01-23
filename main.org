@@ -46,7 +46,7 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 #+end_src
 
-* Rules for some apps
+* Some rules for apps
 ** ~~/.config/bspwm/bspwmrc~
 #+begin_src bash
 bspc rule -a Google-chrome desktop=3
@@ -98,3 +98,75 @@ super + w
 super + {_,alt +} {1-9}
 	bspc {desktop -f,node -d} {1-9}
 #+end_src
+* Polybar examples
+** Top bar modules
+#+begin_src conf
+modules-center = music-now
+modules-left = xworkspaces xwindow
+modules-right = vpn totp filesystem pulseaudio xkeyboard memory cpu; wlan eth date
+#+end_src
+** Module example
+#+begin_src conf
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU "
+format-prefix-foreground = ${colors.primary}
+label = %percentage:2%%
+#+end_src
+** Custom module
+*** Module
+Echo to polybar
+#+begin_src conf
+[module/music-now]
+type = custom/script
+exec = "bb ~/scripts/src/media.clj"
+exec-if = "playerctl status | grep Playing"
+interval = 3
+#+end_src
+*** Script
+#+begin_src clojure
+(ns media
+  (:require [clojure.java.shell :as sh]
+            [clojure.string :as string]))
+
+(def ->int #(Long/parseLong %))
+(def ->float #(Float/parseFloat %))
+
+(defn ->out [& args]
+  (-> (apply sh/sh args)
+      (:out)
+      (string/split #"\n")))
+
+(defn crop [re-field re-crop & [parse?]]
+  (->> (->out "playerctl" "metadata")
+       (filter #(re-find re-field %))
+       (mapv (comp (or parse? identity)
+                  #(string/trim %)
+                  #(string/replace % re-crop "")))))
+
+(let [position (-> (->out "playerctl" "position")
+                   (first)
+                   (->float)
+                   (int))
+      length   (-> (crop #"length"
+                         #"chromium mpris:\w+"
+                         ->int)
+                   (first)
+                   (/ 1000000)
+                   (int)
+                   (#(/ % 100)))
+      name     (crop #"artist|title|album"
+                     #"chromium xesam:\w+")
+      percent  (-> position
+                   (/ length)
+                   (int )
+                   (str "%"))]
+
+  (->> (conj name percent)
+       (filter not-empty)
+       (string/join " ~ ")
+       (symbol)))
+#+end_src
+*** Result
+~HORUS ~ Марс наш ~ 91%~
